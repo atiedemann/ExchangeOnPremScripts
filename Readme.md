@@ -1,5 +1,13 @@
 # Exchange Scripts
 These scripts can help an exchange admin to do thier job better and faster.
+I will update this repository every time I create a script that can be used from other admins.
+
+Have fun with this repository
+
+Arne Tiedemann
+arne.tiedemann@tiedemanns.info
+
+
 In this repository are the following scripts:
 
 ## Maintenance
