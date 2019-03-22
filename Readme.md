@@ -10,26 +10,41 @@ arne.tiedemann@tiedemanns.info
 
 In this repository are the following scripts:
 
+## Get-SetExchangeURLs
+This script can get and set all Exchange Server Url's.
+ou can filter the Exchange Servers in the script to get and/or set the urls only for that servers:
+
+- Autodiscover
+- Owa
+- Outlook Anywhere
+- Oab
+- ActiveSync
+- Ews
+- Ecp
+- Mapi
+
+You can specify for each Url the authentication methods.
+
 ## Maintenance
 
 ### Remove-EmailAddresses
-.DESCRIPTION
+1. DESCRIPTION
   This script remove unwanted proxyAddresses/EmailAddresses from any mailbox that has an proxyaddress matched by the given domainname.
 
-.PARAMETER DomainName
+2. PARAMETER DomainName
   Defines the DomainName that should be removed from all Mailboxes
 
-.PARAMETER Groups
+3. PARAMETER Groups
   [Boolean]
   Define if EmailAddresses from Distributiongroups should also removed
   Value True | False
 
-.PARAMETER PublicFolder
+4. PARAMETER PublicFolder
   [Boolean]
   Define if EmailAddresses from Email enabled PublicFolders should also removed
   Value True | False
 
-.PARAMETER Report
+5. PARAMETER Report
   [Boolean]
   Set this Parameter to False if you want to realy remove Emailaddresses from defined objects
   Value True | False
