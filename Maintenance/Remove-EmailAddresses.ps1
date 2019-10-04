@@ -59,6 +59,9 @@ $PathLogReDo = ('{0}\Documents\infoWAN-ProxyAddresses_ReDo_{1}.log' -f $env:PUBL
 $ProxySearch = "*@$($DomainName)"
 If ($Report) { $MsgReport = ' -- Report only -- ' }
 
+# Define Mailboxes that does not updated
+$RegExUnwantedMailboxes = 'HealthMail|SM_|Admin'
+
 #************************************************************************************
 #		Define functions
 #************************************************************************************
@@ -82,7 +85,8 @@ function Set-Logging
 #************************************************************************************
 
 # Get Mailboxes with EmailAddresses
-$Mailboxes = Get-Mailbox -Filter {(EmailAddresses -like $ProxySearch)}
+$Mailboxes = Get-Mailbox -Filter {(EmailAddresses -like $ProxySearch)} |
+  Where-Object { $_.sAMAccountName -notMatch $RegExUnwantedMailboxes }
 
 # Running Loop for alle Mailboxes
 foreach($Mailbox in $Mailboxes) {
