@@ -7,7 +7,8 @@ Description:	This scripte verifies the DNS records of every accepted domein
 #>
 Param(
     [Parameter(Mandatory)]
-    $Domains
+    $Domains,
+    $HostNames = @('autodiscover','mail','outlook','owa','webmail')
 )
 
 $DNSResult = @()
@@ -15,7 +16,6 @@ $DNSResult = @()
 ###########################################################################
 # Variables
 ###########################################################################
-$DNSrecords = @('autodiscover','mail','outlook','owa','webmail')
 $TestProtocols = @('HTTP','HTTPS')
 ###########################################################################
 # Functions
@@ -24,8 +24,8 @@ $TestProtocols = @('HTTP','HTTPS')
 ###########################################################################
 # Script
 ###########################################################################
-foreach($Domain in $Domains) {
-    foreach($Record in $DNSrecords){
+foreach($Domain in $Domains | Where-Object { $_ -notlike '*onmicrosoft*'} ) {
+    foreach($Record in $HostNames){
         try {
             # Test each DNS record for each Domain
             Write-Host ('testing DNS name: {0}.{1} ' -f $Record, $Domain) -NoNewline
